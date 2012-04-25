@@ -3,8 +3,7 @@
 
 from PIL import Image
 from PIL.ExifTags import TAGS
-from gi.repository import Gtk
-
+from windows import MainWindow
 
 def get_exif(fn):
     ret = {}
@@ -17,16 +16,8 @@ def get_exif(fn):
 
 
 def main():
-    builder = Gtk.Builder()
-    builder.add_from_file("gui/main.ui")
+    w = MainWindow()
 
-    handlers = {
-        "onDeleteWindow": Gtk.main_quit,
-        }
-    builder.connect_signals(handlers)
-    window = builder.get_object("window1")
-    window.show_all()
-    Gtk.main()
     return 0
 
 if __name__ == '__main__':
