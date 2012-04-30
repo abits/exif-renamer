@@ -28,3 +28,4 @@ pip-log.txt
 
 # ide
 .idea
+.idea/workspace.xml

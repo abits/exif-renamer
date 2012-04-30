@@ -1,6 +1,8 @@
+from models import *
+
 class PhotoRenamer():
-    self.targets = []
-    self.file_list = []
+    targets = []
+    file_list = []
 
     def rename_batch(self, targets):
         pass
@@ -10,3 +12,9 @@ class PhotoRenamer():
 
     def build_photos(self, targets):
         pass
+
+    def update_targets_from_filelist(self):
+        for file_name in self.file_list:
+            photo = Photo(file_name)
+            photo.update_exif_data()
+            self.targets.append(photo)

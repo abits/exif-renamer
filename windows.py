@@ -26,9 +26,19 @@ class MainWindow(object):
         Gtk.main()
 
     def rename_file(self, *args):
-        r = PhotoRenamer()
-        r.file_list = self.files
-
+        renamer = PhotoRenamer()
+        renamer.file_list = self.files
+        renamer.update_targets_from_filelist()
+        log_text = _('log-rename-files') + ':\n'
+        log_text = log_text + ('-' * len(log_text)) + '\n'
+        for target in renamer.targets:
+            target.rename()
+            log_text = log_text + \
+                       target.original_file_name + '\n\t -> ' + \
+                       target.renamed_file_name + '\n'
+        buffer = Gtk.TextBuffer()
+        buffer.set_text(log_text)
+        self.textview.set_buffer(buffer)
 
     def open_file(self, *args):
         file_selector = Gtk.FileChooserDialog(_('select-file'), None, Gtk.FileChooserAction.OPEN)
