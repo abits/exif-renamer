@@ -39,6 +39,14 @@ class MainWindow(object):
         buffer = Gtk.TextBuffer()
         buffer.set_text(log_text)
         self.textview.set_buffer(buffer)
+        self.commit(self, renamer=renamer)
+
+    def commit(self, **args):
+        dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.QUESTION,
+                                   Gtk.ButtonsType.YES_NO, "Sollen diese Dateien umbenannt werden?")
+        response = dialog.run()
+        if response == Gtk.ResponseType.YES:
+            args['renamer'].rename_batch(args['renamer'].targets)
 
     def open_file(self, *args):
         file_selector = Gtk.FileChooserDialog(_('select-file'), None, Gtk.FileChooserAction.OPEN)
