@@ -23,6 +23,9 @@ class Photo():
     def get_original_path(self):
         return os.path.join(self.original_base_dir, self.original_file_name)
 
+    def get_rename_path(self):
+        return os.path.join(self.original_base_dir, self.renamed_file_name)
+
     def update_exif_data(self):
         self.raw_exif_data = self.get_exif(self.get_original_path())
         print self.raw_exif_data
