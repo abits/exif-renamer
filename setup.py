@@ -1,10 +1,14 @@
 #from distutils.core import setup
 from setuptools import setup, find_packages
+import glob
+import os
+from DistUtilsExtra.command import *
+
 
 setup(
     name='exif-renamer',
     version='0.1',
-    packages=find_packages(),
+    packages=['exif_renamer'],
     url='https://abits@github.com/abits/exif-renamer.git',
     license='LICENSE.txt',
     author='Chris Martel',
@@ -14,5 +18,13 @@ setup(
     install_requires=[
         "PIL>=1.1.7"
     ],
-    include_package_data=True
+    include_package_data=True,
+    data_files=[
+        ('share/exif-renamer/ui',
+         glob.glob("data/ui/*.ui")
+        ),
+    ],
+    scripts=['exif-renamer'],
+    cmdclass = { "build" : build_extra.build_extra,
+                 "build_icons" :  build_icons.build_icons }
 )
