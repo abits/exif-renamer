@@ -30,4 +30,6 @@ pip-log.txt
 .idea
 .idea/*
 
+*.png
+
 MANIFEST
