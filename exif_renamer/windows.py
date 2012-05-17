@@ -1,8 +1,8 @@
 from gi.repository import Gtk
-from renamer.settings import Settings
+from exif_renamer.settings import Settings
 import gettext
 import os.path
-from renamer.controllers import PhotoRenamer
+from exif_renamer.controllers import PhotoRenamer
 
 _ = gettext.gettext
 
@@ -11,7 +11,7 @@ class MainWindow(object):
         self.settings = Settings()
         self.files = []
         builder = Gtk.Builder()
-        builder.add_from_file("renamer/main.ui")
+        builder.add_from_file("exif-renamer/main.ui")
 
         handlers = {
             "on_delete_window": Gtk.main_quit,
@@ -46,7 +46,7 @@ class MainWindow(object):
                                    Gtk.ButtonsType.YES_NO, "Sollen diese Dateien umbenannt werden?")
         response = dialog.run()
         if response == Gtk.ResponseType.YES:
-            kwargs['renamer'].rename_batch(kwargs['renamer'].targets)
+            kwargs['exif-renamer'].rename_batch(kwargs['exif-renamer'].targets)
         dialog.destroy()
 
     def open_file(self, *args):
@@ -94,5 +94,5 @@ class MainWindow(object):
                                  "along with this program; if not, see <http://www.gnu.org/licenses/>.")
         about_dialog.set_name("ExifRenamer")
         about_dialog.set_version("0.0.1")
-        about_dialog.set_website("https://github.com/abits/exif-renamer")
+        about_dialog.set_website("https://github.com/abits/exif-exif-renamer")
         about_dialog.run()

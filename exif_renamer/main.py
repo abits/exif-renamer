@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #-*- coding: utf-8 -*-
-from renamer.windows import MainWindow
+from exif_renamer.windows import MainWindow
 
 def main():
     w = MainWindow()

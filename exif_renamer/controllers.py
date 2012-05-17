@@ -1,4 +1,4 @@
-from renamer.models import *
+from exif_renamer.models import *
 import shutil
 
 class PhotoRenamer():
