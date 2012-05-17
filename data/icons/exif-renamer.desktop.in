@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=0.1
+Name=ExifRenamer
+GenericName=Exif photo renamer
+Comment=Rename photos based on exif data
+Comment[de]=Dateien mit Exif Daten umbenennen
+Icon=exif-renamer
+Exec=exif-renamer %f
+Terminal=false
+MimeType=image/jpeg;
+Categories=Photography;Graphics;GTK;
