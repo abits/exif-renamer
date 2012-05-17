@@ -1,9 +1,7 @@
-#from distutils.core import setup
-from setuptools import setup, find_packages
+from distutils.core import setup
 import glob
-import os
 from DistUtilsExtra.command import *
-
+from DistUtilsExtra.auto import *
 
 setup(
     name='exif-renamer',
@@ -23,8 +21,10 @@ setup(
         ('share/exif-renamer/ui',
          glob.glob("data/ui/*.ui")
         ),
+        ("share/applications",
+         glob.glob("data/desktop/*.desktop")),
     ],
-    scripts=['exif-renamer'],
+    scripts=['bin/exif-renamer'],
     cmdclass = { "build" : build_extra.build_extra,
                  "build_icons" :  build_icons.build_icons }
 )

@@ -2,4 +2,5 @@ include *.txt
 recursive-include docs *.txt
 recursive-include data *.png
 recursive-include data *.svg
-recursive-include renamer *.ui
+recursive-include data *.ui
+recursive-include desktop *.in
