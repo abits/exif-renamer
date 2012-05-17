@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #-*- coding: utf-8 -*-
-from windows import MainWindow
+from renamer.windows import MainWindow
 
 def main():
     w = MainWindow()

@@ -1,8 +1,8 @@
 from gi.repository import Gtk
-from settings import Settings
+from renamer.settings import Settings
 import gettext
 import os.path
-from controllers import PhotoRenamer
+from renamer.controllers import PhotoRenamer
 
 _ = gettext.gettext
 
@@ -11,7 +11,7 @@ class MainWindow(object):
         self.settings = Settings()
         self.files = []
         builder = Gtk.Builder()
-        builder.add_from_file("ui/main.ui")
+        builder.add_from_file("renamer/main.ui")
 
         handlers = {
             "on_delete_window": Gtk.main_quit,

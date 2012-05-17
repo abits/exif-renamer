@@ -1,5 +1,4 @@
-from models import *
-import os
+from renamer.models import *
 import shutil
 
 class PhotoRenamer():
