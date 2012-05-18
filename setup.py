@@ -8,10 +8,10 @@ content =  []
 for line in settings_file.readlines():
     if line.startswith('user_data', 4):
         path_value = "'%s/share/exif-renamer'" % sys.prefix
-        content.append(line.replace("''", path_value))
+        content.append(line.replace("'../data'", path_value))
     elif line.startswith('ui_data', 4):
         path_value = "'%s/share/exif-renamer/ui'" % sys.prefix
-        content.append(line.replace("''", path_value))
+        content.append(line.replace("'../data/ui'", path_value))
     else:
         content.append(line)
 settings_file.close()

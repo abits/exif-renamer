@@ -11,7 +11,7 @@ class MainWindow(object):
         self.settings = Settings()
         self.files = []
         builder = Gtk.Builder()
-        builder.add_from_file("../data/ui/main.ui")
+        builder.add_from_file(os.path.join(self.settings.ui_data, 'main.ui'))
 
         handlers = {
             "on_delete_window": Gtk.main_quit,
