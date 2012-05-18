@@ -1,7 +1,23 @@
 from distutils.core import setup
-import glob
+import glob, fileinput, sys
 from DistUtilsExtra.command import *
 from DistUtilsExtra.auto import *
+
+settings_file = open(os.path.join('exif_renamer', "settings.py"), 'r')
+content =  []
+for line in settings_file.readlines():
+    if line.startswith('user_data', 4):
+        path_value = "'%s/share/exif-renamer'" % sys.prefix
+        content.append(line.replace("''", path_value))
+    elif line.startswith('ui_data', 4):
+        path_value = "'%s/share/exif-renamer/ui'" % sys.prefix
+        content.append(line.replace("''", path_value))
+    else:
+        content.append(line)
+settings_file.close()
+settings_file = open(os.path.join('exif_renamer', "settings.py"), 'w')
+settings_file.writelines(content)
+settings_file.close()
 
 setup(
     name='exif-renamer',

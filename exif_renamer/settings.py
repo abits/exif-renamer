@@ -1,4 +1,6 @@
 class Settings():
-    def __init__(self):
-        self.recursive = True
-        self.rename_scheme = 'YYYY_mm_DD_HH_MM_SS'
+    user_data = ''
+    ui_data = ''
+    recursive = True
+    rename_scheme = 'YYYY_mm_DD_HH_MM_SS'
+
