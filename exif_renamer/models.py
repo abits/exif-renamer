@@ -1,6 +1,7 @@
 from PIL import Image
 from PIL.ExifTags import TAGS
 from datetime import datetime
+from settings import Settings
 import ConfigParser
 import os
 
@@ -30,7 +31,8 @@ class Photo():
         self.raw_exif_data = self.get_exif(self.get_original_path())
         print self.raw_exif_data
         config = ConfigParser.ConfigParser()
-        ini_file = 'data' + os.sep + self.raw_exif_data['Make'] + '.ini'
+        ini_file = os.path.join(Settings.user_data, 'manufacturers', self.raw_exif_data['Make'] + '.ini')
+        print ini_file
         config.read(ini_file)
         ini_section = self.raw_exif_data['Model']
         exif_index = config.get(ini_section, 'datetime')
