@@ -39,7 +39,7 @@ class MainWindow(object):
         buffer = Gtk.TextBuffer()
         buffer.set_text(log_text)
         self.textview.set_buffer(buffer)
-        self.commit(renamer='renamer')
+        self.commit(renamer=renamer)
 
     def commit(self, **kwargs):
         dialog = Gtk.MessageDialog(self.window, 0, Gtk.MessageType.QUESTION,
