@@ -1,5 +1,5 @@
 from distutils.core import setup
-import glob, fileinput, sys
+import glob, sys
 from DistUtilsExtra.command import *
 from DistUtilsExtra.auto import *
 
