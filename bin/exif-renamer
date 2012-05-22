@@ -1,0 +1,5 @@
+#!/bin/bash
+# start exif renamer
+
+export PYTHONPATH='/usr/lib/python2.7/site-packages'
+/usr/bin/python -c "from exif_renamer import main; main.main()"
