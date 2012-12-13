@@ -9,6 +9,7 @@ class Photo():
     def __init__(self, file_name):
         self.original_base_dir = os.path.dirname(file_name)
         self.original_file_name = os.path.basename(file_name)
+        self.original_file_name_noext = os.path.splitext(self.original_file_name)[0]
         self.renamed_file_name = ''
         self.raw_exif_data = {}
         self.date = None
@@ -16,7 +17,15 @@ class Photo():
 
     def rename(self):
         extension = 'jpg'
-        self.renamed_file_name = '{:02d}{:02d}{:02d}_{:02d}{:02d}{:02d}.{:s}'.format(self.date.year, self.date.month, self.date.day, self.date.hour, self.date.minute, self.date.second, extension)
+        self.renamed_file_name = \
+            '{:02d}{:02d}{:02d}_{:02d}{:02d}_{:s}.{:s}'.format(
+                self.date.year,
+                self.date.month,
+                self.date.day,
+                self.date.hour,
+                self.date.minute,
+                self.original_file_name_noext,
+                extension)
 
     def rename_and_save(self):
         self.rename()
@@ -29,13 +38,13 @@ class Photo():
 
     def update_exif_data(self):
         self.raw_exif_data = self.get_exif(self.get_original_path())
-        print self.raw_exif_data
+        #print self.raw_exif_data
         config = ConfigParser.ConfigParser()
         ini_file = os.path.join(Settings.user_data, 'manufacturers', self.raw_exif_data['Make'] + '.ini')
-        print ini_file
+        #print ini_file
         config.read(ini_file)
         ini_section = self.raw_exif_data['Model']
-        exif_index = config.get(ini_section, 'datetime')
+        exif_index = config.get(ini_section, 'datetimeoriginal')
         exif_timestamp = config.get(ini_section, exif_index)
         format_string = '%Y:%m:%d %H:%M:%S'
         self.date =  datetime.strptime(self.raw_exif_data[exif_timestamp], format_string)

@@ -18,7 +18,7 @@ settings_file.close()
 
 setup(
     name='exif-renamer',
-    version='0.1',
+    version='0.2',
     packages=['exif_renamer'],
     url='https://abits@github.com/abits/exif-renamer.git',
     license='LICENSE.txt',
